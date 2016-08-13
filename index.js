@@ -34,7 +34,7 @@ function _isResWritable() {
 }
 
 function load(name, doNotParse) {
-  var cookies = (typeof document === 'undefined') ? _rawCookie : cookie.parse(document.cookie);
+  var cookies = (typeof document === 'undefined') || (typeof document.cookie === 'undefined') ? _rawCookie : cookie.parse(document.cookie);
   var cookieVal = cookies && cookies[name];
 
   if (!doNotParse) {
@@ -49,7 +49,7 @@ function load(name, doNotParse) {
 }
 
 function select(regex) {
-  var cookies = (typeof document === 'undefined') ? _rawCookie : cookie.parse(document.cookie);
+  var cookies = (typeof document === 'undefined') || (typeof document.cookie === 'undefined') ? _rawCookie : cookie.parse(document.cookie);
   if(!cookies)
     return {}
   if(!regex)
